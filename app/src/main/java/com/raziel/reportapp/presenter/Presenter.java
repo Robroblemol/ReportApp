@@ -36,12 +36,10 @@ public class Presenter implements IPresenter {
 
     @Override
     public void addReport(String device, String description, Boolean state) {
-        String d = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String d = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss").format(new Date());
         String s = null;
-        if(!state) {
-            s = "Novedad";
-        } else
-            s = "OK";
+        if(state) s = "Novedad";
+        else s = "OK";
 
         Map<String,Object> dataTask = new HashMap<>();
         dataTask.put("device",device);
