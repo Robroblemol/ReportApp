@@ -7,7 +7,7 @@ public class ReportViewModel {
     private String date;
     private String user;
     private String id;
-    private boolean state;
+    private String state;
 
 
     public  ReportViewModel(){
@@ -67,11 +67,11 @@ public class ReportViewModel {
         this.id = id;
     }
 
-    public boolean isState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(boolean state) {
+    public void setState(String state) {
         this.state = state;
     }
 }

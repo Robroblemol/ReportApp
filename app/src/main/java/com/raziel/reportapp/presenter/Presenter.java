@@ -35,11 +35,18 @@ public class Presenter implements IPresenter {
 
 
     @Override
-    public void addReport(String device, String description) {
+    public void addReport(String device, String description, Boolean state) {
         String d = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String s = null;
+        if(!state) {
+            s = "Novedad";
+        } else
+            s = "OK";
+
         Map<String,Object> dataTask = new HashMap<>();
         dataTask.put("device",device);
         dataTask.put("description",description);
+        dataTask.put("state",s);
         dataTask.put("date",d);
         db.collection("report")
                 .add(dataTask)

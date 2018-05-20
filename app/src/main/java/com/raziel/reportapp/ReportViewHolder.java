@@ -23,6 +23,6 @@ public class ReportViewHolder extends RecyclerView.ViewHolder {
     public void render(ReportViewModel reportViewModel){
         lblDevice.setText(reportViewModel.getDevice());
         lblDate.setText(reportViewModel.getDate());
-        lblState.setText(reportViewModel.getDescription());
+        lblState.setText(reportViewModel.getState());
     }
 }

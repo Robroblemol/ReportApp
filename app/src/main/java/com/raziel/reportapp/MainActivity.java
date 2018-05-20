@@ -46,8 +46,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
             Bundle bundle = getIntent().getExtras();
             String device = bundle.getString("device");
             String description = bundle.getString("description");
+            Boolean state = bundle.getBoolean("state");
             if(device != null && description != null)
-                presenter.addReport(device,description);
+                presenter.addReport(device,description,state);
 
         }catch (Exception e){
             e.getStackTrace();
