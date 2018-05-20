@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ReportApp</string>
+    <string name="name_device">Equipo</string>
+    <string name="description">Descripcion</string>
+    <string name="issue">Novedad</string>
+    <string name="add">Agregar</string>
+</resources>
