@@ -8,4 +8,5 @@ public interface IMainActivity {
     void addReport();
     void addReport(ReportViewModel t);
     void showReports(List<ReportViewModel> taskViewModelList);
+    void lodingData();
 }

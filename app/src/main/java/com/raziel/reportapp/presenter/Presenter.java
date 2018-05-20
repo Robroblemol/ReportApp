@@ -60,6 +60,7 @@ public class Presenter implements IPresenter {
 
     @Override
     public void initLstReport() {
+        v.lodingData();
         db.collection("report")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

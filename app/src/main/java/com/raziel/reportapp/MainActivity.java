@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.raziel.reportapp.models.IMainActivity;
 import com.raziel.reportapp.presenter.Presenter;
@@ -70,5 +71,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     public void showReports(List<ReportViewModel> taskViewModelList) {
         rvAdapter.addLstReport(taskViewModelList);
         rvAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void lodingData() {
+        Toast.makeText(this, "Cargando datos", Toast.LENGTH_LONG).show();
     }
 }
