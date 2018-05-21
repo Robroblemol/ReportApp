@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.raziel.reportapp.models.IMainActivity;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     RecyclerView rvReport;
 
     private RecyclerViewAdapter rvAdapter;
+    private RViewAdapter rViewAdapter = new RViewAdapter();
     private Presenter presenter;
 
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         rvReport.setLayoutManager(new LinearLayoutManager(this));
         rvReport.addItemDecoration(new android.support.v7.widget.
                 DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        rvReport.setAdapter(rvAdapter);
+        rvReport.setAdapter(rViewAdapter);
 
         try{
             Bundle bundle = getIntent().getExtras();
@@ -53,7 +55,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         }catch (Exception e){
             e.getStackTrace();
         }
-
+        rViewAdapter.setOnItemClickListener(new RViewAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Toast.makeText
+                        (v.getContext(),"Position card = "+position,
+                                Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
     @OnClick(R.id.fActionButton)
@@ -65,13 +74,16 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     @Override
     public void addReport(ReportViewModel t) {
-        rvAdapter.addReport(t);
+        //rvAdapter.addReport(t);
+        rViewAdapter.addReport(t);
     }
 
     @Override
     public void showReports(List<ReportViewModel> taskViewModelList) {
-        rvAdapter.addLstReport(taskViewModelList);
-        rvAdapter.notifyDataSetChanged();
+        rViewAdapter.addLstReport(taskViewModelList);
+        rViewAdapter.notifyDataSetChanged();
+        //rvAdapter.addLstReport(taskViewModelList);
+        //rvAdapter.notifyDataSetChanged();
     }
 
     @Override
