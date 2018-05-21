@@ -58,11 +58,19 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         rViewAdapter.setOnItemClickListener(new RViewAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Toast.makeText
-                        (v.getContext(),"Position card = "+position,
-                                Toast.LENGTH_SHORT).show();
+               // Toast.makeText
+               //         (v.getContext(),"Position card = "+position,
+               //                 Toast.LENGTH_SHORT).show();
+                Intent viewDetail = new Intent(getApplicationContext(),ReportViewDetail.class);
+                viewDetail.putExtra("device","Prueba de vista");
+                viewDetail.putExtra("description","Esta es la prueba de lavista detalle");
+                viewDetail.putExtra("state","Ok");
+                viewDetail.putExtra("date","2018-05-20 at 22:54:01");
+                startActivity(viewDetail);
+
             }
         });
+
 
     }
     @OnClick(R.id.fActionButton)
