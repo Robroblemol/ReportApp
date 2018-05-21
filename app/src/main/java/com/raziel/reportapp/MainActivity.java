@@ -78,4 +78,5 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     public void lodingData() {
         Toast.makeText(this, "Cargando datos", Toast.LENGTH_LONG).show();
     }
+
 }
