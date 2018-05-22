@@ -37,7 +37,7 @@ public class Presenter implements IPresenter {
     @Override
     public void addReport(String device, String description, Boolean state) {
         String d = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss").format(new Date());
-        String s = null;
+        String s;
         if(state) s = "Novedad";
         else s = "OK";
 

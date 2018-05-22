@@ -61,11 +61,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                // Toast.makeText
                //         (v.getContext(),"Position card = "+position,
                //                 Toast.LENGTH_SHORT).show();
+                ReportViewModel rpt = rViewAdapter.getReportByIndex(position);
                 Intent viewDetail = new Intent(getApplicationContext(),ReportViewDetail.class);
-                viewDetail.putExtra("device","Prueba de vista");
-                viewDetail.putExtra("description","Esta es la prueba de lavista detalle");
-                viewDetail.putExtra("state","Ok");
-                viewDetail.putExtra("date","2018-05-20 at 22:54:01");
+                viewDetail.putExtra("device",rpt.getDevice());
+                viewDetail.putExtra("description",rpt.getDescription());
+                viewDetail.putExtra("state",rpt.getState());
+                viewDetail.putExtra("date",rpt.getDate());
                 startActivity(viewDetail);
 
             }

@@ -48,6 +48,9 @@ public class RViewAdapter extends RecyclerView.Adapter<RViewAdapter.ViewHolder>{
         viewModels.clear();
         viewModels.addAll(viewModels);
     }
+    public ReportViewModel getReportByIndex(int i){
+        return viewModels.get(i);
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.lblDevice)
