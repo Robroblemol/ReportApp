@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     private RViewAdapter rViewAdapter = new RViewAdapter();
     private Presenter presenter;
 
-    //private boolean flagLoing = false;
+    private boolean flagLoing = false;
 
 
     @Override
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 String device = bundle.getString("device");
                 String description = bundle.getString("description");
                 Boolean state = bundle.getBoolean("state");
-                //Boolean login = bundle.getBoolean("login");
+                flagLoing = bundle.getBoolean("login");
                 if(device != null && description != null)
                     presenter.addReport(device,description,state);
                 //if (login){
@@ -92,6 +92,16 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
             }
         });
 
+
+    }
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        if (!flagLoing){
+            Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
+            startActivity(logIn);
+        }
 
     }
     @OnClick(R.id.fActionButton)

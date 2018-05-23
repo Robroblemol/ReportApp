@@ -56,7 +56,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements IEmailPa
         else
             Toast.makeText(this,"usuario no registrado",Toast.LENGTH_SHORT).show();
         Intent main = new Intent(getApplicationContext(),MainActivity.class);
-        //main.putExtra("login",flag);
+        main.putExtra("login",flag);
         startActivity(main);
     }
 }
