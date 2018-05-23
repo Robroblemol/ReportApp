@@ -4,4 +4,6 @@
     <string name="description">Descripcion</string>
     <string name="issue">Novedad</string>
     <string name="add">Agregar</string>
+    <string name="login">Ingresar</string>
+    <string name="auth_failed">Authentication failed.</string>
 </resources>
