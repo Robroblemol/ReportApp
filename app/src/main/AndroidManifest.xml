@@ -10,16 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".AddReport">
         </activity>
-        <activity android:name=".ReportViewDetail"></activity>
-        <activity android:name=".views.EmailPasswordActivity"></activity>
+        <activity android:name=".ReportViewDetail">
+        </activity>
+        <activity android:name=".views.EmailPasswordActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

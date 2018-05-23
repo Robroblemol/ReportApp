@@ -1,10 +1,12 @@
 package com.raziel.reportapp.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.raziel.reportapp.MainActivity;
 import com.raziel.reportapp.R;
 import com.raziel.reportapp.models.IEmailPasswordActivity;
 import com.raziel.reportapp.models.ILoginPresenter;
@@ -53,5 +55,8 @@ public class EmailPasswordActivity extends AppCompatActivity implements IEmailPa
             Toast.makeText(this,"usuario registrado",Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this,"usuario no registrado",Toast.LENGTH_SHORT).show();
+        Intent main = new Intent(getApplicationContext(),MainActivity.class);
+        //main.putExtra("login",flag);
+        startActivity(main);
     }
 }

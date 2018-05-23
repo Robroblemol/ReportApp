@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     private RViewAdapter rViewAdapter = new RViewAdapter();
     private Presenter presenter;
 
+    //private boolean flagLoing = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +47,34 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvReport.setAdapter(rViewAdapter);
 
-        try{
-            Bundle bundle = getIntent().getExtras();
-            String device = bundle.getString("device");
-            String description = bundle.getString("description");
-            Boolean state = bundle.getBoolean("state");
-            if(device != null && description != null)
-                presenter.addReport(device,description,state);
 
-        }catch (Exception e){
-            e.getStackTrace();
-        }
+        //if (!flagLoing){
+
+        //}else {
+            try{
+                Bundle bundle = getIntent().getExtras();
+                String device = bundle.getString("device");
+                String description = bundle.getString("description");
+                Boolean state = bundle.getBoolean("state");
+                //Boolean login = bundle.getBoolean("login");
+                if(device != null && description != null)
+                    presenter.addReport(device,description,state);
+                //if (login){
+                //    Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
+                //    startActivity(logIn);
+                //}
+          //          flagLoing = bundle.getBoolean("login");
+
+
+            }catch (Exception e){
+           //     Bundle bundle = getIntent().getExtras();
+           //     flagLoing = bundle.getBoolean("login");
+
+                e.getStackTrace();
+            }
+
+        //}
+
         rViewAdapter.setOnItemClickListener(new RViewAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
@@ -72,8 +91,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
             }
         });
-        Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
-        startActivity(logIn);
 
 
     }
