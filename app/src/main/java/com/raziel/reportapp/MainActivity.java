@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     }
     @Override
+    public void onBackPressed() {
+
+    }
+    @Override
     public void onStart() {
 
         super.onStart();
