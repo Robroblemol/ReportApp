@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.raziel.reportapp.models.IMainActivity;
 import com.raziel.reportapp.presenter.Presenter;
+import com.raziel.reportapp.views.EmailPasswordActivity;
 
 import java.util.List;
 
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
             }
         });
+        Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
+        startActivity(logIn);
 
 
     }

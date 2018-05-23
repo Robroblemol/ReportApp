@@ -28,13 +28,16 @@ public class LoginPresenter implements ILoginPresenter {
         Log.d(TAG,"signin: "+email);
 
         mAuth.signInWithEmailAndPassword(email,pass).
-                addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful())
-                        Log.d(TAG,"signInWithEmail:success");
+                        if (task.isSuccessful()){
+                            Log.d(TAG,"signInWithEmail:success");
+                            v.logInOK(true);
+                        }
                         else{
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            v.logInOK(false);
                         }
 
                     }

@@ -2,5 +2,5 @@ package com.raziel.reportapp.models;
 
 public interface IEmailPasswordActivity {
     void signIn();
-    void logInOK();
+    void logInOK(Boolean flag);
 }
