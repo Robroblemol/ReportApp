@@ -34,6 +34,7 @@ public class AddReport extends AppCompatActivity implements IAddReport {
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         intent.putExtra("device",etDevice.getText().toString());
         intent.putExtra("description",etDescription.getText().toString());
+        intent.putExtra("login",true);
         startActivity(intent);
 
     }

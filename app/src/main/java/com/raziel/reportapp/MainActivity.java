@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     private RViewAdapter rViewAdapter = new RViewAdapter();
     private Presenter presenter;
 
-    private boolean flagLoing = false;
+    private boolean flagLoing;
 
 
     @Override
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 flagLoing = bundle.getBoolean("login");
                 if(device != null && description != null)
                     presenter.addReport(device,description,state);
+                Log.i("flagLogin","flagLoing: "+flagLoing);
                 //if (login){
                 //    Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
                 //    startActivity(logIn);
