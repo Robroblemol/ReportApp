@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,13 +42,14 @@ public class Presenter implements IPresenter {
         if(state) s = "Novedad";
         else s = "OK";
 
+        CollectionReference reports = db.collection("report");
+
         Map<String,Object> dataTask = new HashMap<>();
         dataTask.put("device",device);
         dataTask.put("description",description);
         dataTask.put("state",s);
         dataTask.put("date",d);
-        db.collection("report")
-                .add(dataTask)
+        reports.add(dataTask)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -75,8 +77,10 @@ public class Presenter implements IPresenter {
                             for (DocumentSnapshot document:task.getResult()){
                                 Log.d("Presenter", document.getId() + " => " + document.getData());
                                 ReportViewModel t = document.toObject(ReportViewModel.class);
+                                t.setId(document.getId());
                                 lst.add(t);
                                 v.addReport(t);
+                                Log.i("idReport","idReport: "+t.getId());
                             }
                             Log.d("Presenter","lst = "+lst.size());
                             v.showReports(lst);
