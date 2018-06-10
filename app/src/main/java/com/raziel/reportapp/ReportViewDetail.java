@@ -2,6 +2,7 @@ package com.raziel.reportapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -18,6 +19,10 @@ public class ReportViewDetail extends AppCompatActivity {
     TextView lblVDate;
     @BindView(R.id.lblVState)
     TextView lblVState;
+    @BindView(R.id.txtVFix)
+    TextView txtVfix;
+    @BindView(R.id.bttnFix)
+    Button bttnFix;
 
 
 
@@ -39,6 +44,12 @@ public class ReportViewDetail extends AppCompatActivity {
             lblVDescription.setText(description);
             lblVDate.setText(date);
             lblVState.setText(state);
+
+            if(state.equals("Novedad")){
+                //
+                // txtVfix.setEnabled(false);
+                bttnFix.setEnabled(true);
+            }
 
             //if(device != null && description != null)
                 //presenter.addReport(device,description,state);
