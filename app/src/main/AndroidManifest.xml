@@ -16,7 +16,8 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".AddReport">
+        <activity android:name=".AddReport"
+            android:label="Agregar reporte">
         </activity>
         <activity android:name=".ReportViewDetail">
 
