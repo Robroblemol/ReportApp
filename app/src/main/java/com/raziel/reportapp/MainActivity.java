@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     private RViewAdapter rViewAdapter = new RViewAdapter();
     private Presenter presenter;
 
-    private boolean flagLoing;
+    private boolean flagLogin;
 
 
     @Override
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         presenter = new Presenter(this);
         rvAdapter = new RecyclerViewAdapter();
 
+
         presenter.initLstReport();
         rvAdapter.addLstReport(presenter.getLst());
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         rvReport.addItemDecoration(new android.support.v7.widget.
                 DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvReport.setAdapter(rViewAdapter);
+
 
 
         //if (!flagLoing){
@@ -57,10 +59,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 String device = bundle.getString("device");
                 String description = bundle.getString("description");
                 Boolean state = bundle.getBoolean("state");
-                flagLoing = bundle.getBoolean("login");
+                flagLogin = bundle.getBoolean("login");
                 if(device != null && description != null)
                     presenter.addReport(device,description,state);
-                Log.i("flagLogin","flagLoing: "+flagLoing);
+                Log.i("flagLogin","flagLoing: "+flagLogin);
                 //if (login){
                 //    Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
                 //    startActivity(logIn);
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 viewDetail.putExtra("description",rpt.getDescription());
                 viewDetail.putExtra("state",rpt.getState());
                 viewDetail.putExtra("date",rpt.getDate());
+                viewDetail.putExtra("id",rpt.getId());
                 startActivity(viewDetail);
 
             }
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     public void onStart() {
 
         super.onStart();
-        if (!flagLoing){
+        if (!flagLogin){
             Intent logIn = new Intent(getApplicationContext(),EmailPasswordActivity.class);
             startActivity(logIn);
         }

@@ -1,15 +1,24 @@
 package com.raziel.reportapp;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.raziel.reportapp.models.IRViewDetailPresenter;
+import com.raziel.reportapp.models.IReportViewDetail;
+import com.raziel.reportapp.presenter.RViewDetailPresenter;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
-public class ReportViewDetail extends AppCompatActivity {
+public class ReportViewDetail extends AppCompatActivity implements IReportViewDetail {
 
     @BindView(R.id.lblVDevice)
     TextView lblVDevice;
@@ -24,12 +33,16 @@ public class ReportViewDetail extends AppCompatActivity {
     @BindView(R.id.bttnFix)
     Button bttnFix;
 
+    IRViewDetailPresenter presenter;
+    String id;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
+        presenter = new RViewDetailPresenter(this);
 
         ButterKnife.bind(this);
 
@@ -39,6 +52,7 @@ public class ReportViewDetail extends AppCompatActivity {
             String description = bundle.getString("description");
             String date = bundle.getString("date");
             String state = bundle.getString("state");
+            id = bundle.getString("id");
 
             lblVDevice.setText(device);
             lblVDescription.setText(description);
@@ -47,9 +61,17 @@ public class ReportViewDetail extends AppCompatActivity {
 
             if(state.equals("Novedad")){
                 //
-                // txtVfix.setEnabled(false);
+                txtVfix.setEnabled(true);
+                txtVfix.setVisibility(View.VISIBLE);
+                bttnFix.setVisibility(View.VISIBLE);
                 bttnFix.setEnabled(true);
+            }else{
+                txtVfix.setEnabled(false);
+                txtVfix.setVisibility(View.INVISIBLE);
+                bttnFix.setVisibility(View.INVISIBLE);
+                bttnFix.setEnabled(false);
             }
+
 
             //if(device != null && description != null)
                 //presenter.addReport(device,description,state);
@@ -59,5 +81,27 @@ public class ReportViewDetail extends AppCompatActivity {
         }
     }
 
+    @OnClick(R.id.bttnFix)
+    @Override
+    public void addFix() {
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title(R.string.add_fix)
+                .customView(R.layout.fix_activity,true)
+                .positiveText(R.string.add)
+                .onPositive(new MaterialDialog.SingleButtonCallback(){
 
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        View v = dialog.getCustomView();
+                        try{
+                            TextView fix = v.findViewById(R.id.etFix);
+                            String f = fix.getText().toString();
+                            presenter.addFix(f,id);
+                        }catch (Exception e){
+
+                        }
+                    }
+                }).show();
+
+    }
 }
