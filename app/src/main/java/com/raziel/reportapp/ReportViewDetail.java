@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -113,5 +114,10 @@ public class ReportViewDetail extends AppCompatActivity implements IReportViewDe
                     }
                 }).show();
 
+    }
+
+    @Override
+    public void showFixAdded() {
+        Toast.makeText(this, "Fix Added", Toast.LENGTH_SHORT).show();
     }
 }

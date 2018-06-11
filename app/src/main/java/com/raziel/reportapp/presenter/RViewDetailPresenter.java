@@ -31,6 +31,7 @@ public class RViewDetailPresenter implements IRViewDetailPresenter{
         Map<String, Object> fix = new HashMap<>();
         fix.put("fix",f);
         reports.document(id).set(fix, SetOptions.merge());
+        v.showFixAdded();
         //db.collection("report").document(id).set(fix, SetOptions.merge());
     }
 }
