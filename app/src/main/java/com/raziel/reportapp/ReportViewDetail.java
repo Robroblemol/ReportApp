@@ -1,10 +1,12 @@
 package com.raziel.reportapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -52,6 +54,7 @@ public class ReportViewDetail extends AppCompatActivity implements IReportViewDe
             String description = bundle.getString("description");
             String date = bundle.getString("date");
             String state = bundle.getString("state");
+            String fix = bundle.getString("fix");
             id = bundle.getString("id");
 
             lblVDevice.setText(device);
@@ -63,6 +66,7 @@ public class ReportViewDetail extends AppCompatActivity implements IReportViewDe
                 //
                 txtVfix.setEnabled(true);
                 txtVfix.setVisibility(View.VISIBLE);
+                txtVfix.setText(fix);
                 bttnFix.setVisibility(View.VISIBLE);
                 bttnFix.setEnabled(true);
             }else{
@@ -83,7 +87,7 @@ public class ReportViewDetail extends AppCompatActivity implements IReportViewDe
 
     @OnClick(R.id.bttnFix)
     @Override
-    public void addFix() {
+    public void addFix(final View v) {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title(R.string.add_fix)
                 .customView(R.layout.fix_activity,true)
@@ -92,11 +96,17 @@ public class ReportViewDetail extends AppCompatActivity implements IReportViewDe
 
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        View v = dialog.getCustomView();
+                        View view = dialog.getCustomView();
                         try{
-                            TextView fix = v.findViewById(R.id.etFix);
+                            TextView fix = view.findViewById(R.id.etFix);
                             String f = fix.getText().toString();
+                            //TextView txtVfix = (TextView) v;
+                            //txtVfix.setText(f);
                             presenter.addFix(f,id);
+                            //txtVfix.setVisibility(View.INVISIBLE);
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("login",true);
+                            startActivity(intent);
                         }catch (Exception e){
 
                         }

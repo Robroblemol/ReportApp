@@ -1,5 +1,7 @@
 package com.raziel.reportapp.models;
 
+import android.view.View;
+
 public interface IReportViewDetail {
-    void addFix();
+    void addFix(View v);
 }

@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 viewDetail.putExtra("state",rpt.getState());
                 viewDetail.putExtra("date",rpt.getDate());
                 viewDetail.putExtra("id",rpt.getId());
+                viewDetail.putExtra("fix",rpt.getFix());
                 startActivity(viewDetail);
 
             }

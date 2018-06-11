@@ -8,6 +8,7 @@ public class ReportViewModel {
     private String user;
     private String id;
     private String state;
+    private String fix;
 
 
     public  ReportViewModel(){
@@ -17,6 +18,13 @@ public class ReportViewModel {
         this.device=device;
         this.description=description;
         this.date=date;
+    }
+    public String getFix() {
+        return fix;
+    }
+
+    public void setFix(String fix) {
+        this.fix = fix;
     }
 
     public String getDevice() {
