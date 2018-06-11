@@ -22,7 +22,8 @@
         <activity android:name=".ReportViewDetail"
             android:label="Reporte">
         </activity>
-        <activity android:name=".views.EmailPasswordActivity">
+        <activity android:name=".views.EmailPasswordActivity"
+            android:label="Login">
         </activity>
     </application>
 
