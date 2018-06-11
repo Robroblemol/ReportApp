@@ -19,8 +19,8 @@
         <activity android:name=".AddReport"
             android:label="Agregar reporte">
         </activity>
-        <activity android:name=".ReportViewDetail">
-
+        <activity android:name=".ReportViewDetail"
+            android:label="Reporte">
         </activity>
         <activity android:name=".views.EmailPasswordActivity">
         </activity>
